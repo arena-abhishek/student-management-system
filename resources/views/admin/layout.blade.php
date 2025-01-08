@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="dist/css/adminlte.min2167.css?v=3.2.0">
+  @yield('customCss')
 
 
 </head>
@@ -861,6 +862,7 @@
       bsCustomFileInput.init();
     });
   </script>
+  @yield('customScript')
 </body>
 
 
