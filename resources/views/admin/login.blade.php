@@ -23,12 +23,12 @@
 
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        @if(Session::has('success'))
+        @if(Session('success'))
         <div class="alert alert-success">
           {{Session::get('success')}}
         </div>
         @endif
-        @if(Session::has('error'))
+        @if(Session('error'))
         <div class="alert alert-danger">
           {{Session::get('error')}}
         </div>
