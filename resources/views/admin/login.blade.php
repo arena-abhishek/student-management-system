@@ -7,15 +7,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Login</title>
-      <base href="{{asset('adminAssets')}}/" />
-      <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+  <base href="{{asset('adminAssets')}}/" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
 
-      <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 
-      <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
-      <link rel="stylesheet" href="dist/css/adminlte.min2167.css?v=3.2.0">
+  <link rel="stylesheet" href="dist/css/adminlte.min2167.css?v=3.2.0">
 </head>
 
 <body class="hold-transition login-page">
@@ -24,15 +24,15 @@
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
         @if(Session('success'))
-        <div class="alert alert-success">
-          {{Session::get('success')}}
-        </div>
-        @endif
+      <div class="alert alert-success">
+        {{Session::get('success')}}
+      </div>
+    @endif
         @if(Session('error'))
-        <div class="alert alert-danger">
-          {{Session::get('error')}}
-        </div>
-        @endif
+      <div class="alert alert-danger">
+        {{Session::get('error')}}
+      </div>
+    @endif
         <a href="../../index2.html" class="h1"><b>School</b>LMS</a>
       </div>
       <div class="card-body">
@@ -48,8 +48,8 @@
             </div>
           </div>
           @error('email')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
+        <p class="text-danger">{{ $message }}</p>
+      @enderror
           <div class="input-group mb-3">
             <input type="password" name="password" class="form-control" placeholder="Password">
             <div class="input-group-append">
@@ -59,8 +59,8 @@
             </div>
           </div>
           @error('password')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
+        <p class="text-danger">{{ $message }}</p>
+      @enderror
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">

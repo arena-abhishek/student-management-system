@@ -196,35 +196,24 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Charts
+                  Academic Year
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="../charts/chartjs.html" class="nav-link">
+                  <a href="{{route('academic-year.create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>ChartJS</p>
+                    <p>Add Record</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="../charts/flot.html" class="nav-link">
+                  <a href="{{route('academic-year.read')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Flot</p>
+                    <p>View Record</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="../charts/inline.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inline</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../charts/uplot.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>uPlot</p>
-                  </a>
-                </li>
+                
               </ul>
             </li>
 

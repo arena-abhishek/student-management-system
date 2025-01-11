@@ -7,59 +7,50 @@ use Illuminate\Http\Request;
 
 class ClassesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+      return view('admin.class.class');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $data = new classes();
+        $data->name = $request->name;
+        $data->save();
+        return redirect()->route('class.create')->with('success', 'Class Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(classes $classes)
+    public function read(classes $classes)
     {
-        //
+        $data['class'] = classes::get();
+        return view('admin.class.class_list', $data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(classes $classes)
+    public function delete($id)
     {
-        //
+        $data = classes::findOrFail($id);
+        $data->delete();
+        return redirect()->route('class.read')->with('success', 'Class Deleted Successfully');
+    }
+
+    public function edit($id)
+    {
+        $data['class'] = classes::findOrFail($id);
+        return view('admin.class.class_edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, classes $classes)
+    public function update(Request $request)
     {
-        //
+        $data = classes::findOrFail($request->id);
+        $data->name = $request->name;
+        $data->update();
+        return redirect()->route('class.read')->with('success', 'Class Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(classes $classes)
-    {
-        //
-    }
 }

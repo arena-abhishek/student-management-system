@@ -21,6 +21,7 @@ class AdminController extends Controller
       'password' => 'required'
     ]);
     if (Auth::guard('admin')->attempt(['email' => $req->email, 'password' => $req->password])) {
+
       if (Auth::guard('admin')->user()->role != 'admin') {
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login')->with('error', 'Unauthorized user Access denied');
@@ -33,9 +34,9 @@ class AdminController extends Controller
   public function register()
   {
     $user = new User();
-    $user->name = "admin";
-    $user->role = "admin";
-    $user->email = "admin@gmail.com";
+    $user->name = "Student";
+    $user->role = "student";
+    $user->email = "student@gmail.com";
     $user->password = Hash::make('admin');
     $user->save();
     return redirect()->route('admin.login')->with('success', 'User created succesfully');
