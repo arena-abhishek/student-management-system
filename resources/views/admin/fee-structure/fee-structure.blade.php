@@ -41,10 +41,12 @@
                 <div class="row">
                   <div class="form-group col-md-4">
                     <label for="">Select Academic Year</label>
-                    <select value=""  selected name="academic_year_id" class="form-control">
+                    <select value="" selected name="academic_year_id" class="form-control">
                       <option value="">Select Academic Year</option>
                       @foreach ($academic_years as $academic_year) 
-              <option value="{{$academic_year->id}}">{{$academic_year->name}}</option>
+              <option value="{{$academic_year->id}}" >
+                  {{$academic_year->name}}
+                  </option>
             @endforeach
                     </select>
                   </div>
@@ -53,10 +55,10 @@
           @enderror
                   <div class="form-group col-md-4">
                     <label for="">Select Class</label>
-                    <select value=""  selected name="class_id" class="form-control">
+                    <select value="" selected name="class_id" class="form-control">
                       <option value="">Select Class</option>
                       @foreach ($classes as $class) 
-               <option value="{{$class->id}}">{{$class->name}}</option>
+             <option value="{{$class->id}}">{{$class->name}}</option>
             @endforeach
                     </select>
                   </div>
@@ -65,7 +67,7 @@
           @enderror
                   <div class="form-group col-md-4">
                     <label for="">Select Fee head</label>
-                    <select value=""  selected name="fee_head_id" class="form-control">
+                    <select value="" selected name="fee_head_id" class="form-control">
                       <option value="">Select Fee head</option>
                       @foreach ($fee_heads as $fee_head) 
              <option value="{{$fee_head->id}}">{{$fee_head->name}}</option>

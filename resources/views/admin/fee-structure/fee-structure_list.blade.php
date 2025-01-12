@@ -39,6 +39,7 @@
                     <th>ID</th>
                     <th>Academic Year</th>
                     <th>Class</th>
+                    <th>FeeHead</th>
                     <th>April</th>
                     <th>May</th>
                     <th>June</th>
@@ -85,6 +86,7 @@
                     <th>ID</th>
                     <th>Academic Year</th>
                     <th>Class</th>
+                    <th>FeeHead</th>
                     <th>April</th>
                     <th>May</th>
                     <th>June</th>

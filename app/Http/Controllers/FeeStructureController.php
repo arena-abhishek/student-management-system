@@ -15,7 +15,7 @@ class FeeStructureController extends Controller
         $data['classes'] = classes::all();
         $data['academic_years'] = AcademicYear::all();
         $data['fee_heads'] = FeeHead::all();
-        return view('admin.fee-structure.fee-structure',$data);
+        return view('admin.fee-structure.fee-structure', $data);
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class FeeStructureController extends Controller
 
     public function read(FeeStructure $FeeStructure)
     {
-        $data = FeeStructure::with('FeeHead','AcademicYear','classes')->latest()->get();
+        $data['feeStructure'] = FeeStructure::with('FeeHead', 'AcademicYear', 'classes')->latest()->get();
         return view('admin.fee-structure.fee-structure_list', $data);
     }
 
@@ -44,7 +44,10 @@ class FeeStructureController extends Controller
 
     public function edit($id)
     {
-        $data['feeStructure'] = FeeStructure::findOrFail($id);
+        $data['fee'] = FeeStructure::findOrFail($id);
+        $data['classes'] = classes::all();
+        $data['academic_years'] = AcademicYear::all();
+        $data['fee_heads'] = FeeHead::all();
         return view('admin.fee-structure.fee-structure_edit', $data);
     }
 
@@ -53,9 +56,23 @@ class FeeStructureController extends Controller
      */
     public function update(Request $request)
     {
-        $data = FeeStructure::findOrFail($request->id);
-        $data->name = $request->name;
-        $data->update();
+        $fee = FeeStructure::findOrFail($request->id);
+        $fee->class_id = $request->class_id;
+        $fee->academic_year_id = $request->academic_year_id;
+        $fee->fee_head_id = $request->fee_head_id;
+        $fee->april = $request->april;
+        $fee->may = $request->may;
+        $fee->june = $request->june;
+        $fee->july = $request->july;
+        $fee->august = $request->august;
+        $fee->september = $request->september;
+        $fee->october = $request->october;
+        $fee->november = $request->november;
+        $fee->december = $request->december;
+        $fee->january = $request->january;
+        $fee->february = $request->february;
+        $fee->march = $request->march;
+        $fee->update();
         return redirect()->route('fee-structure.read')->with('success', 'Fee Structure Updated Successfully');
     }
 }

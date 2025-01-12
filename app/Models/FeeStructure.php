@@ -36,6 +36,6 @@ class FeeStructure extends Model
     }
     public function Classes()
     {
-        return $this->belongsTo(classes::class, 'classes_id');
+        return $this->belongsTo(classes::class, 'class_id');
     }
 }
