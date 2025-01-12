@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>form</title>
+  <title>School Management</title>
 
   <base href="{{asset('adminAssets')}}/" />
 
@@ -184,7 +184,7 @@
 
 
             <li class="nav-item">
-              <a href="../widgets.html" class="nav-link">
+              <a href="{{route('admin.dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Dashboard
@@ -213,7 +213,79 @@
                     <p>View Record</p>
                   </a>
                 </li>
-                
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Class Management
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('class.create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Record</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('class.read')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Record</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Fee Head mngmt
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('fee-head.create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Record</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('fee-head.read')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Record</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Fee Structure
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('fee-structure.create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Record</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('fee-structure.read')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Record</p>
+                  </a>
+                </li>
+
               </ul>
             </li>
 
