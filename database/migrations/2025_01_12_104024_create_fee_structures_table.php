@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,9 +12,9 @@ return new class extends Migration
     {
         Schema::create('fee_structures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
-            $table->foreignId('academic_year_id')->constrained('classes')->onDelete('cascade');
-            $table->foreignId('fee_head_id')->constrained('classes')->onDelete('cascade');
+            $table->foreignId('class_id')->constrained()->onDelete('cascade');
+            $table->foreignId('academic_year_id')->constrained()->onDelete('cascade');
+            $table->foreignId('fee_head_id')->constrained()->onDelete('cascade');
             $table->string('april')->nullable();
             $table->string('may')->nullable();
             $table->string('june')->nullable();

@@ -38,6 +38,7 @@ class AdminController extends Controller
     $user->role = "student";
     $user->email = "student@gmail.com";
     $user->password = Hash::make('admin');
+    // $user->class_id = NULL;
     $user->save();
     return redirect()->route('admin.login')->with('success', 'User created succesfully');
 

@@ -15,8 +15,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-fee"><a href="{{route('admin.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-fee active">Fee Structure</li>
+            <li class="breadcrumb-fee"><a href="{{route('admin.dashboard')}}">Home/</a></li>
+            <li class="breadcrumb-fee active"> Fee Structure </li>
           </ol>
         </div>
       </div>
@@ -29,7 +29,42 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Fee Structure</h3>
+              <h3 class="card-title">Fee Structure List</h3>
+              <!-- <div class="row"> -->
+              <form action="">
+                <div class="form-group col-md-4 mt-4">
+                  <label for="">Select Academic Year</label>
+                  <select value="" selected name="academic_year_id" class="form-control">
+                    <option value="">Select Academic Year</option>
+                    @foreach ($academic_years as $academic_year) 
+            <option value="{{$academic_year->id}} " {{$academic_year->id == request('academic_year_id') ? 'selected' : null}}>
+              {{$academic_year->name}}
+            </option>
+          @endforeach
+                  </select>
+                </div>
+                @error('academic_year_id')
+          <p class="text-danger">{{$message}}</p>
+        @enderror
+                <div class="form-group col-md-4">
+                  <label for="">Select Class</label>
+                  <select value="" selected name="class_id" class="form-control">
+                    <option value="">Select Class</option>
+                    @foreach ($classes as $class) 
+            <option value="{{$class->id}}" {{$class->id == request('class_id') ? 'selected' : null}}>
+              {{$class->name}}
+            </option>
+          @endforeach
+                  </select>
+                </div>
+                @error('class_id')
+          <p class="text-danger">{{$message}}</p>
+        @enderror
+                <div class="form-group  col-md-4">
+                  <button type="submit" class="btn btn-success">Filter data</button>
+                </div>
+              </form>
+              <!-- </div> -->
             </div>
 
             <div class="card-body">
@@ -82,7 +117,7 @@
           @endforeach
                 </tbody>
                 <tfoot>
-                <tr>
+                  <tr>
                     <th>ID</th>
                     <th>Academic Year</th>
                     <th>Class</th>
