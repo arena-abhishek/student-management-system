@@ -67,12 +67,12 @@ class StudentController extends Controller
         return view('admin.student.student_list', $data);
     }
 
-    // public function delete($id)
-    // {
-    //     $data['student'] = User::findOrFail($id);
-    //     $data->delete();
-    //     return redirect()->route('student.read')->with('success', 'Student Deleted Successfully');
-    // }
+    public function delete($id)
+    {
+        $student = User::findOrFail($id);
+        $student->delete();
+        return redirect()->route('student.read')->with('success', 'Student Deleted Successfully');
+    }
 
     public function edit($id)
     {
@@ -94,8 +94,6 @@ class StudentController extends Controller
         $user->dob = $request->dob;
         $user->mobno = $request->mobno;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = 'student';
         $user->update();
         return redirect()->route('student.read')->with('success', 'Student Updated Successfully');
     }

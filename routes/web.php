@@ -6,10 +6,27 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FeeHeadController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   return view('welcome');
+});
+
+Route::group(['prefix' => 'student'], function () {
+  //guest
+  Route::group(['middleware' => 'guest'], function () {
+    Route::get('login', [UserController::class, 'index'])->name('student.login');
+    Route::post('authenticate', [UserController::class, 'authenticate'])->name('student.authenticate');
+
+  });
+
+  //auth
+  Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+    Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
+  });
+
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -84,7 +101,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('fee-structure/delete/{id}', [FeeStructureController::class, 'delete'])->name('fee-structure.delete');
 
     Route::post('fee-structure/update', [FeeStructureController::class, 'update'])->name('fee-structure.update');
-    
+
     // Student management
     Route::get('student/create', [StudentController::class, 'index'])->name('student.create');
 
@@ -96,7 +113,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
-    Route::post('student/update{id}', [StudentController::class, 'update'])->name('student.update');
+    Route::post('student/update/{id}', [StudentController::class, 'update'])->name('student.update');
 
   });
 });
