@@ -29,15 +29,29 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Student List</h3>
+              <!-- <h3 class="card-title">Student List</h3> -->
               <form action="">
-                <div class="col-md-4">
-                  <select name="academic_year_id" id="" class="form-control">
-                    <option value="" disabled selected>Select Academic Year</option>
-                    @foreach ($academic_year as $item )
-                    <option value="{{$item->id}}">{{$item->name}}</option>
-                    @endforeach
-                  </select>
+                @csrf
+                <div class="row">
+                  <div class="col-md-4">
+                    <select name="academic_year_id" id="" class="form-control">
+                      <option value="" disabled selected>Select Academic Year</option>
+                      @foreach ($academic_years as $item)
+              <option value="{{$item->id}}" {{$item->id == request('academic_year_id') ? 'selected' : null}} >{{$item->name}}</option>
+            @endforeach
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <select name="class_id" id="" class="form-control">
+                      <option value="" disabled selected>Select Class</option>
+                      @foreach ($classes as $item)
+              <option value="{{$item->id}}" {{$item->id == request('class_id') ? 'selected' : null}}>{{$item->name}}</option>
+            @endforeach
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="submit" value="Filter" class="btn btn-primary btn-sm "></input>
+                  </div>
                 </div>
               </form>
             </div>
@@ -71,8 +85,8 @@
             <td>{{$item->mobno}}</td>
             <td>{{$item->email}}</td>
             <td>{{$item->created_at}}</td>
-            <td><a href="{{route('class.edit', $item->id)}}" class="btn btn-primary">Edit</a></td>
-            <td><a href="{{route('class.delete', $item->id)}}"
+            <td><a href="{{route('student.edit', $item->id)}}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{route('student.delete', $item->id)}}"
               onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger">Delete</a></td>
             </tr>
           @endforeach

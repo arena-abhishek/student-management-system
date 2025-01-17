@@ -53,50 +53,52 @@ class StudentController extends Controller
 
     public function read(Request $request)
     {
-        $query = User::with('studentClass', 'studentAcademicYear' )->where('role', 'student')->latest('id')->get();
-        $data['students'] = $query;
-        $data['AcademicYears'] = AcademicYear::all();
-        $data['Classes'] = classes::all();
-        return view('admin.student.student_list',$data);
+        $query = User::with('studentClass', 'studentAcademicYear')->where('role', 'student')->latest('id');
+        if ($request->filled('academic_year_id')) {
+            $query->where('academic_year_id', $request->get('academic_year_id'));
+        }
+        if ($request->filled('class_id')) {
+            $query->where('class_id', $request->get('class_id'));
+        }
+        $students = $query->get();
+        $data['students'] = $students;
+        $data['academic_years'] = AcademicYear::all();
+        $data['classes'] = classes::all();
+        return view('admin.student.student_list', $data);
     }
 
     // public function delete($id)
     // {
-    //     $data = FeeStructure::findOrFail($id);
+    //     $data['student'] = User::findOrFail($id);
     //     $data->delete();
-    //     return redirect()->route('fee-structure.read')->with('success', 'Fee Structure Deleted Successfully');
+    //     return redirect()->route('student.read')->with('success', 'Student Deleted Successfully');
     // }
 
-    // public function edit($id)
-    // {
-    //     $data['fee'] = FeeStructure::findOrFail($id);
-    //     $data['classes'] = classes::all();
-    //     $data['academic_years'] = AcademicYear::all();
-    //     $data['fee_heads'] = FeeHead::all();
-    //     return view('admin.fee-structure.fee-structure_edit', $data);
-    // }
+    public function edit($id)
+    {
+        $data['classes'] = Classes::all();
+        $data['academic_years'] = AcademicYear::all();
+        $data['student'] = User::findOrFail($id);
+        return view('admin.student.student_edit', $data);
+    }
 
-    // public function update(Request $request)
-    // {
-    //     $fee = FeeStructure::findOrFail($request->id);
-    //     $fee->class_id = $request->class_id;
-    //     $fee->academic_year_id = $request->academic_year_id;
-    //     $fee->fee_head_id = $request->fee_head_id;
-    //     $fee->april = $request->april;
-    //     $fee->may = $request->may;
-    //     $fee->june = $request->june;
-    //     $fee->july = $request->july;
-    //     $fee->august = $request->august;
-    //     $fee->september = $request->september;
-    //     $fee->october = $request->october;
-    //     $fee->november = $request->november;
-    //     $fee->december = $request->december;
-    //     $fee->january = $request->january;
-    //     $fee->february = $request->february;
-    //     $fee->march = $request->march;
-    //     $fee->update();
-    //     return redirect()->route('fee-structure.read')->with('success', 'Fee Structure Updated Successfully');
-    // }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->academic_year_id = $request->academic_year_id;
+        $user->class_id = $request->class_id;
+        $user->admission_date = $request->admission_date;
+        $user->name = $request->name;
+        $user->father_name = $request->father_name;
+        $user->mother_name = $request->mother_name;
+        $user->dob = $request->dob;
+        $user->mobno = $request->mobno;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = 'student';
+        $user->update();
+        return redirect()->route('student.read')->with('success', 'Student Updated Successfully');
+    }
 }
 
 

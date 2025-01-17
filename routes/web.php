@@ -92,11 +92,11 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('student/read', [StudentController::class, 'read'])->name('student.read');
 
-    // Route::get('student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
+    Route::get('student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
 
-    // Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
+    Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
-    // Route::post('student/update', [StudentController::class, 'update'])->name('student.update');
+    Route::post('student/update{id}', [StudentController::class, 'update'])->name('student.update');
 
   });
 });

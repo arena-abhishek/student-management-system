@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Fee Structure</h1>
+          <h1>Update Student</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active">Fee Structure</li>
+            <li class="breadcrumb-item active">Update Student</li>
           </ol>
         </div>
       </div>
@@ -31,126 +31,103 @@
         <div class="alert alert-success">{{session('success')}}</div>
       @endif
             <div class="card-header">
-              <h3 class="card-title">Add Fee Structure</h3>
+              <h3 class="card-title">Update Student </h3>
             </div>
 
 
-            <form action="{{route('fee-structure.update')}}" method="post">
+            <form action="{{ route('student.update',$student->id) }}" method="post">
               @csrf
-              <input type="hidden" name="id" value="{{ $fee->id }}">
               <div class="card-body">
                 <div class="row">
                   <div class="form-group col-md-4">
-                    <label for="">Select Academic Year</label>
-                    <select value="" selected name="academic_year_id" class="form-control">
+                    <label for="academic_year_id">Select Academic Year</label>
+                    <select name="academic_year_id" class="form-control">
                       <option value="">Select Academic Year</option>
                       @foreach ($academic_years as $academic_year) 
-              <option value="{{$academic_year->id}}" {{ $fee->academic_year_id == $academic_year->id ? 'selected' : null}}>{{$academic_year->name}}</option>
+              <option value="{{ $academic_year->id }}" {{$academic_year->id == $student->academic_year_id ? 'selected' : null}} >{{ $academic_year->name }}</option>
             @endforeach
                     </select>
-                  </div>
-                  @error('academic_year_id')
-            <p class="text-danger">{{$message}}</p>
+                    @error('academic_year_id')
+            <p class="text-danger">{{ $message }}</p>
           @enderror
+                  </div>
                   <div class="form-group col-md-4">
-                    <label for="">Select Class</label>
-                    <select value="" selected name="class_id" class="form-control">
+                    <label for="class_id">Select Class</label>
+                    <select name="class_id" class="form-control">
                       <option value="">Select Class</option>
                       @foreach ($classes as $class) 
-               <option value="{{$class->id}}" {{ $fee->class_id == $class->id ? 'selected' : null}}>{{$class->name}}</option>
+              <option value="{{ $class->id }}" {{$class->id == $student->class_id ? 'selected' : null}}>{{ $class->name }}</option>
             @endforeach
                     </select>
-                  </div>
-                  @error('class_id')
-            <p class="text-danger">{{$message}}</p>
+                    @error('class_id')
+            <p class="text-danger">{{ $message }}</p>
           @enderror
-                  <div class="form-group col-md-4">
-                    <label for="">Select Fee head</label>
-                    <select value="" selected name="fee_head_id" class="form-control">
-                      <option value="">Select Fee head</option>
-                      @foreach ($fee_heads as $fee_head) 
-              <option value="{{$fee_head->id}}" {{ $fee->fee_head_id == $fee_head->id ? 'selected' : null}}>{{$fee_head->name}}</option>
-            @endforeach
-                    </select>
                   </div>
-                  @error('fee_head_id')
-            <p class="text-danger">{{$message}}</p>
+                  <div class="form-group col-md-4">
+                    <label for="admission_date">Admission Date</label>
+                    <input type="date" name="admission_date"    class="form-control" value="{{$student->admission_date}}">
+                    @error('admission_date')
+            <p class="text-danger">{{ $message }}</p>
           @enderror
-                </div>
-                <div class="row">
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">April Fee</label>
-                    <input type="text" name="april" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter April Fee" value="{{old('april', $fee->april )}}" >
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">May Fee</label>
-                    <input type="text" name="may" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter May Fee"  value="{{old('april', $fee->may )}}">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">June Fee</label>
-                    <input type="text" name="june" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter June Fee"  value="{{old('april', $fee->june )}}">
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">July Fee</label>
-                    <input type="text" name="july" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter July Fee"  value="{{old('april', $fee->july )}}">
+                    <label for="name">Student Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Student Name" value="{{$student->name}}">
+                    @error('name')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">August Fee</label>
-                    <input type="text" name="august" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter August Fee"  value="{{old('april', $fee->august )}}">
+                    <label for="father_name">Student's Father Name</label>
+                    <input type="text" name="father_name" class="form-control"
+                      placeholder="Enter Student's Father Name" value="{{$student->father_name}}">
+                    @error('father_name')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">September Fee</label>
-                    <input type="text" name="september" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter September Fee"  value="{{old('april', $fee->september )}}">
+                    <label for="mother_name">Student's Mother Name</label>
+                    <input type="text" name="mother_name" class="form-control"
+                      placeholder="Enter Student's Mother Name" value="{{$student->mother_name}}">
+                    @error('mother_name')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                 </div>
                 <div class="row">
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">October Fee</label>
-                    <input type="text" name="october" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter October Fee"  value="{{old('april', $fee->october )}}">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control"
+                    value="{{$student->dob}}">
+                    
+                    @error('dob')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">November Fee</label>
-                    <input type="text" name="november" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter November Fee"  value="{{old('april', $fee->november )}}">
+                    <label for="mobno">Mobile Number</label>
+                    <input type="text" name="mobno" class="form-control" placeholder="Enter Mobile Number"value="{{$student->mobno}}">
+                    @error('mobno')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">December Fee</label>
-                    <input type="text" name="december" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter December Fee"  value="{{old('april', $fee->december )}}">
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" class="form-control" placeholder="Enter Email Address" value="{{$student->email}}">
+                    @error('email')
+            <p class="text-danger">{{ $message }}</p>
+          @enderror
                   </div>
                 </div>
-                <div class="row">
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">January Fee</label>
-                    <input type="text" name="january" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter January Fee"  value="{{old('april', $fee->january )}}">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">February Fee</label>
-                    <input type="text" name="february" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter February Fee"  value="{{old('april', $fee->february )}}">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="exampleInputEmail1">March Fee</label>
-                    <input type="text" name="march" class="form-control" id="exampleInputEmail1"
-                      placeholder="Enter March Fee"  value="{{old('april', $fee->march )}}">
-                  </div>
-                </div>
+                
               </div>
-
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Update fee Structure</button>
+                <button type="submit" class="btn btn-primary">Update Student</button>
               </div>
             </form>
+
           </div>
         </div>
 
