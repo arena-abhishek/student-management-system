@@ -17,10 +17,10 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        if (Auth::guard('admin')->attempt(['email' => $req->email, 'password' => $req->password])) {
+        if (Auth::attempt(['email' => $req->email, 'password' => $req->password])) {
 
-            if (Auth::guard('admin')->user()->role != 'student') {
-                Auth::guard('admin')->logout();
+            if (Auth::user()->role != 'student') {
+                Auth::logout();
                 return redirect()->route('student.login')->with('error', 'Unauthorized user Access denied');
             }
             return redirect()->route('student.dashboard');
@@ -35,7 +35,7 @@ class UserController extends Controller
     }
     public function logout()
     {
-        Auth::guard('student')->logout();
+        Auth::logout();
         return redirect()->route('student.login')->with('success', 'Logout successfully');
 
     }
