@@ -88,15 +88,15 @@ Route::group(['prefix' => 'admin'], function () {
     // Student management
     Route::get('student/create', [StudentController::class, 'index'])->name('student.create');
 
-    // Route::post('fee-structure/store', [FeeStructureController::class, 'store'])->name('fee-structure.store');
+    Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
 
-    // Route::get('fee-structure/read', [FeeStructureController::class, 'read'])->name('fee-structure.read');
+    Route::get('student/read', [StudentController::class, 'read'])->name('student.read');
 
-    // Route::get('fee-structure/edit/{id}', [FeeStructureController::class, 'edit'])->name('fee-structure.edit');
+    // Route::get('student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
 
-    // Route::get('fee-structure/delete/{id}', [FeeStructureController::class, 'delete'])->name('fee-structure.delete');
+    // Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
-    // Route::post('fee-structure/update', [FeeStructureController::class, 'update'])->name('fee-structure.update');
+    // Route::post('student/update', [StudentController::class, 'update'])->name('student.update');
 
   });
 });

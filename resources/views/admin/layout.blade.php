@@ -220,7 +220,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Class Management
+                  Class Mgmt
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -244,7 +244,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Fee Head mngmt
+                  Fee Head Mgmt
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -268,7 +268,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Fee Structure
+                  Fee Structure Mgmt
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -281,6 +281,30 @@
                 </li>
                 <li class="nav-item">
                   <a href="{{route('fee-structure.read')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Record</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Student Mgmt
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('student.create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Record</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('student.read')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>View Record</p>
                   </a>
