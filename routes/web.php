@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AcademicYearController;
+use App\Http\Controllers\AssignSubjectToClassController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
@@ -146,6 +147,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('subject/delete/{id}', [SubjectController::class, 'delete'])->name('subject.delete');
 
         Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
+
+        //Assign subject management
+        Route::get('assign-subject/create', [AssignSubjectToClassController::class, 'index'])->name('assign-subject.create');
+
+        Route::post('assign-subject/store', [AssignSubjectToClassController::class, 'store'])->name('assign-subject.store');
+
+        Route::get('assign-subject/read', [AssignSubjectToClassController::class, 'read'])->name('assign-subject.read');
+
+        // Route::get('assign-subject/edit/{id}', [AssignSubjectToClassController::class, 'edit'])->name('assign-subject.edit');
+
+        // Route::get('assign-subject/delete/{id}', [AssignSubjectToClassController::class, 'delete'])->name('assign-subject.delete');
+
+        // Route::post('assign-subject/update/{id}', [AssignSubjectToClassController::class, 'update'])->name('assign-subject.update');
 
     });
 });
