@@ -3,9 +3,11 @@
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\FeeHeadController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +67,20 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('academic-year/update', [AcademicYearController::class, 'update'])->name('academic-year.update');
         Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+        // Announcement management
+
+        Route::get('announcement/create', [AnnouncementController::class, 'index'])->name('announcement.create');
+
+        Route::post('announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
+
+        Route::get('announcement/read', [AnnouncementController::class, 'read'])->name('announcement.read');
+
+        Route::get('announcement/edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+
+        Route::get('announcement/delete/{id}', [AnnouncementController::class, 'delete'])->name('announcement.delete');
+
+        Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+
         // Classes management
 
         Route::get('class/create', [ClassesController::class, 'index'])->name('class.create');
@@ -117,6 +133,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('student/delete/{id}', [StudentController::class, 'delete'])->name('student.delete');
 
         Route::post('student/update/{id}', [StudentController::class, 'update'])->name('student.update');
+
+        // Subject management
+        Route::get('subject/create', [SubjectController::class, 'index'])->name('subject.create');
+
+        Route::post('subject/store', [SubjectController::class, 'store'])->name('subject.store');
+
+        Route::get('subject/read', [SubjectController::class, 'read'])->name('subject.read');
+
+        Route::get('subject/edit/{id}', [SubjectController::class, 'edit'])->name('subject.edit');
+
+        Route::get('subject/delete/{id}', [SubjectController::class, 'delete'])->name('subject.delete');
+
+        Route::post('subject/update/{id}', [SubjectController::class, 'update'])->name('subject.update');
 
     });
 });
