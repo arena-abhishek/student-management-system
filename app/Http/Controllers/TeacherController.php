@@ -12,7 +12,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        return view('teacher.teacher.form');
+        return view('admin.teacher.form');
     }
     public function store(Request $request)
     {
@@ -48,7 +48,7 @@ class TeacherController extends Controller
         $query = User::where('role', 'teacher')->latest();
         $teachers = $query->get();
         $data['teachers'] = $teachers;
-        return view('teacher.teacher.list', $data);
+        return view('admin.teacher.list', $data);
     }
 
     public function delete($id)
@@ -61,7 +61,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $data['teacher'] = User::findOrFail($id);
-        return view('teacher.teacher.form_edit', $data);
+        return view('admin.teacher.form_edit', $data);
     }
 
     public function update(Request $request, $id)

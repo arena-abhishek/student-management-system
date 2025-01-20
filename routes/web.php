@@ -5,6 +5,7 @@ use App\Http\Controllers\AssignSubjectToClassController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AssignTeacherToClassController;
 use App\Http\Controllers\FeeHeadController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\StudentController;
@@ -88,7 +89,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
 
         // Announcement management
-
         Route::get('announcement/create', [AnnouncementController::class, 'index'])->name('announcement.create');
 
         Route::post('announcement/store', [AnnouncementController::class, 'store'])->name('announcement.store');
@@ -102,7 +102,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('announcement/update/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
 
         // Classes management
-
         Route::get('class/create', [ClassesController::class, 'index'])->name('class.create');
 
         Route::post('class/store', [ClassesController::class, 'store'])->name('class.store');
@@ -192,6 +191,21 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('teacher/delete/{id}', [TeacherController::class, 'delete'])->name('teacher.delete');
 
         Route::post('teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
+
+        // Assign Teacher management
+        Route::get('assign-teacher/create', [AssignTeacherToClassController::class, 'index'])->name('assign-teacher.create');
+
+        Route::get('findSubject', [AssignTeacherToClassController::class, 'findSubject'])->name('findSubject');
+
+        Route::post('assign-teacher/store', [AssignTeacherToClassController::class, 'store'])->name('assign-teacher.store');
+
+        Route::get('assign-teacher/read', [AssignTeacherToClassController::class, 'read'])->name('assign-teacher.read');
+
+        Route::get('assign-teacher/edit/{id}', [AssignTeacherToClassController::class, 'edit'])->name('assign-teacher.edit');
+
+        Route::get('assign-teacher/delete/{id}', [AssignTeacherToClassController::class, 'delete'])->name('assign-teacher.delete');
+
+        Route::post('assign-teacher/update/{id}', [AssignTeacherToClassController::class, 'update'])->name('assign-teacher.update');
 
     });
 });
