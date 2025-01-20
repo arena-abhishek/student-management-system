@@ -1,4 +1,4 @@
-@extends('student.layout')
+@extends('teacher.layout')
 @section('content')
 
 <div class="content-wrapper">
@@ -17,9 +17,9 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0">Dashboard
-          @if (\Carbon\Carbon::parse(Auth::user()->dob)->isBirthday())
+        {{--   @if (\Carbon\Carbon::parse(Auth::user()->dob)->isBirthday())
           Happy birthday {{Auth::user()->name}}
-          @endif
+          @endif --}}
         </h1>
         </div>
         <div class="col-sm-6">

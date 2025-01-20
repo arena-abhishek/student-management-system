@@ -184,7 +184,7 @@
 
 
             <li class="nav-item">
-              <a href="{{route('student.dashboard')}}" class="nav-link">
+              <a href="{{route('teacher.dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Dashboard
@@ -192,7 +192,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('student.logout')}}" class="nav-link">
+              <a href="{{route('teacher.logout')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Logout
@@ -200,7 +200,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('teacher.change_password')}}" class="nav-link">
+              <a href="{{route('teacher.changePassword')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Change Password
