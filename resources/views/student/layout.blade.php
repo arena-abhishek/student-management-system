@@ -196,6 +196,11 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Logout
+            <li class="nav-item">
+              <a href="{{route('student.change_password')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Change Password
                 </p>
               </a>
             </li>

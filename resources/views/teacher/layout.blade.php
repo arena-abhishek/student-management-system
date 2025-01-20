@@ -164,7 +164,7 @@
       <a href="index3.html" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Teacher LTE 3</span>
       </a>
 
       <div class="sidebar">
@@ -184,15 +184,31 @@
 
 
             <li class="nav-item">
-              <a href="{{route('admin.dashboard')}}" class="nav-link">
+              <a href="{{route('student.dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Dashboard
                 </p>
               </a>
             </li>
-
             <li class="nav-item">
+              <a href="{{route('student.logout')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Logout
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('teacher.change_password')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Change Password
+                </p>
+              </a>
+            </li>
+
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
@@ -311,103 +327,7 @@
                 </li>
 
               </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Announcement Mgmt
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('announcement.create')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Record</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('announcement.read')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Record</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Subject Mgmt
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('subject.create')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Record</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('subject.read')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Record</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Assign Subject Mgmt
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('assign-subject.create')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Record</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('assign-subject.read')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Record</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Teacher Mgmt
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('teacher.create')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Record</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('teacher.read')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Record</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
+            </li> -->
 
           </ul>
         </nav>

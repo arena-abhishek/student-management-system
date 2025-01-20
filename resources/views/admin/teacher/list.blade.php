@@ -11,12 +11,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Assign Subject </h1>
+          <h1>teacher </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item active">Assign Subject List</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item active">teacher List</li>
           </ol>
         </div>
       </div>
@@ -28,21 +28,15 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header ">
-              <form action="" class="row">
-                <div class="form-group col-md-3">
-                  <select name="class_id" class="
-                   form-control">
-                    <option disabled selected>Select Class</option>
-                    @foreach ($classes as $class)
-            <option value="{{ $class->id }}" {{$class->id == request('class_id') ? 'selected' : null}}>
-              {{ $class->name }}</option>
-          @endforeach
-                  </select>
-                </div>
-                <div class="form-group col-md-3">
-                  <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-                </div>
+            <div class="card-header">
+              <!-- <h3 class="card-title">teacher List</h3> -->
+              <form action="">
+                @csrf
+             {{--    <div class="row">
+                  <div class="col-md-4">
+                    <input type="submit" value="Filter" class="btn btn-primary btn-sm "></input>
+                  </div>
+                </div> --}}
               </form>
             </div>
 
@@ -51,24 +45,30 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Class Name</th>
-                    <th>Subject Name</th>
-                    <th>Subject Type</th>
+                    <th>Name</th>
+                    <th>Father's Name</th>
+                    <th>Mother's Name</th>
+                    <th>Date of birth</th>
+                    <th>Moblie Number</th>
+                    <th>Email</th>
                     <th>Created Time</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($assignSubjects as $item)
+                  @foreach ($teachers as $item)
             <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->class->name }}</td>
-            <td>{{ $item->subject->name }}</td>
-            <td>{{ $item->subject->type }}</td>
-            <td>{{ $item->created_at }}</td>
-            <td><a href="{{ route('assign-subject.edit', $item->id) }}" class="btn btn-primary">Edit</a></td>
-            <td><a href="{{ route('assign-subject.delete', $item->id) }}"
+            <td>{{$item->id}}</td>
+            <td>{{$item->name}}</td>
+            <td>{{$item->father_name}}</td>
+            <td>{{$item->mother_name}}</td>
+            <td>{{$item->dob}}</td>
+            <td>{{$item->mobno}}</td>
+            <td>{{$item->email}}</td>
+            <td>{{$item->created_at}}</td>
+            <td><a href="{{route('teacher.edit', $item->id)}}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{route('teacher.delete', $item->id)}}"
               onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger">Delete</a></td>
             </tr>
           @endforeach
@@ -113,9 +113,7 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
+      "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
