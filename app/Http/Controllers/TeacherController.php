@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\AssignTeacherToClass;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,23 +87,23 @@ class TeacherController extends Controller
         $req->validate([
             'email' => 'required|email',
             'password' => 'required'
-          ]);
-          if (Auth::guard('teacher')->attempt(['email' => $req->email, 'password' => $req->password])) {
+        ]);
+        if (Auth::guard('teacher')->attempt(['email' => $req->email, 'password' => $req->password])) {
 
             if (Auth::guard('teacher')->user()->role != 'teacher') {
-              Auth::guard('teacher')->logout();
-              return redirect()->route('teacher.login')->with('error', 'Unauthorized user Access denied');
+                Auth::guard('teacher')->logout();
+                return redirect()->route('teacher.login')->with('error', 'Unauthorized user Access denied');
             }
             return redirect()->route('teacher.dashboard');
-          } else {
+        } else {
             return redirect()->route('teacher.login')->with('error', 'Something went wrong');
-          }
+        }
     }
 
     public function dashboard()
     {
         $data['announcement'] = Announcement::where('type', 'teacher')->latest()->get();
-        return view('teacher.dashboard',$data);
+        return view('teacher.dashboard', $data);
     }
     public function logout()
     {
@@ -133,6 +134,13 @@ class TeacherController extends Controller
             return redirect()->back()->with('error', 'Old Password does not match ');
 
         }
+    }
+
+    public function myClass()
+    {
+        $teacher_id = Auth::guard('teacher')->user()->id;
+        $data['assign_class'] = AssignTeacherToClass::where('teacher_id', $teacher_id)->with(['class','subject'])->get();
+      return view('teacher.my_class',$data);
     }
 
 }

@@ -207,6 +207,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('teacher.my-class')}}" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  My Class & subject
+                </p>
+              </a>
+            </li>
 
             <!-- <li class="nav-item">
               <a href="#" class="nav-link">

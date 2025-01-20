@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'teacher'], function () {
     //auth
     Route::group(['middleware' => 'teacher.auth'], function () {
         Route::get('dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+        Route::get('my-class', [TeacherController::class, 'myClass'])->name('teacher.my-class');
         Route::get('logout', [TeacherController::class, 'logout'])->name('teacher.logout');
         Route::get('change-password', [TeacherController::class, 'changePassword'])->name('teacher.changePassword');
         Route::post('update-password', [TeacherController::class, 'updatePassword'])->name('teacher.updatePassword');
@@ -47,6 +49,7 @@ Route::group(['prefix' => 'student'], function () {
     //auth
     Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [UserController::class, 'dashboard'])->name('student.dashboard');
+        Route::get('my-subject', [UserController::class, 'mySubject'])->name('student.my-subject');
         Route::get('logout', [UserController::class, 'logout'])->name('student.logout');
         Route::get('change-password', [UserController::class, 'changePassword'])->name('student.changePassword');
         Route::post('update-password', [UserController::class, 'updatePassword'])->name('student.updatePassword');
@@ -208,6 +211,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('assign-teacher/update/{id}', [AssignTeacherToClassController::class, 'update'])->name('assign-teacher.update');
 
     });
+
+    Route::get('clear', function () {
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        Artisan::call('optimize:clear');
+        return redirect()->back()->with('success', 'Cache cleared successfully');
+    })->name('clear');
 });
-
-
