@@ -11,6 +11,7 @@ use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -69,7 +70,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
     Route::group(['middleware' => 'admin.auth'], function () {
 
-        // Academic Year Management
+        // Admin Dashboard
         Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
 
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -78,6 +79,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('table', [AdminController::class, 'table'])->name('admin.table');
 
+         // Academic Year Management
         Route::get('academic-year/create', [AcademicYearController::class, 'index'])->name('academic-year.create');
 
         Route::post('academic-year/store', [AcademicYearController::class, 'store'])->name('academic-year.store');
@@ -89,7 +91,20 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('academic-year/delete/{id}', [AcademicYearController::class, 'delete'])->name('academic-year.delete');
 
         Route::post('academic-year/update', [AcademicYearController::class, 'update'])->name('academic-year.update');
-        Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+
+        // TimeTable Management
+        Route::get('timetable/create', [TimetableController::class, 'index'])->name('timetable.create');
+
+        Route::post('timetable/store', [TimetableController::class, 'store'])->name('timetable.store');
+
+        Route::get('timetable/read', [TimetableController::class, 'read'])->name('timetable.read');
+
+        Route::get('timetable/edit/{id}', [TimetableController::class, 'edit'])->name('timetable.edit');
+
+        Route::get('timetable/delete/{id}', [TimetableController::class, 'delete'])->name('timetable.delete');
+
+        Route::post('timetable/update', [TimetableController::class, 'update'])->name('timetable.update');
 
         // Announcement management
         Route::get('announcement/create', [AnnouncementController::class, 'index'])->name('announcement.create');
